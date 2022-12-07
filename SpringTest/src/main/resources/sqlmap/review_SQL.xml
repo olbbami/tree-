@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hdcd.mapper.ReviewMapper">
+	<sql id="reviewSearch">
+		<if test="searchType != null and searchType == 'title'">
+			and re_title like '%'||#{searchWord}||'%' 
+		</if>
+		<if test="searchType != null and searchType == 'writer'">
+			and re_writer like '%'||#{searchWord}||'%' 
+		</if>
+	</sql>
+	
+	<select id="selectReviewCount" parameterType="paginationInfoVO" resultType="int">
+		select count(re_no) from review
+		where 1=1
+		<include refid="reviewSearch"/>
+		order by re_no desc
+	</select>
+	
+	<select id="selectReviewList" parameterType="paginationInfoVO" resultType="reviewVO">
+		
+		select b.* 
+		from (
+		
+			select a.*, row_number() over (order by a.re_no desc) rnum 
+			from (
+				select 
+					re_no, re_title, re_content, re_writer, to_date(re_date, 'yy-mm-dd hh24:mi:ss') re_date, re_hit 
+					from review 
+					where 1=1
+					<include refid="reviewSearch"/>
+					order by re_no desc 
+				) a 
+			) b 
+			<![CDATA[
+				where b.rnum >= #{startRow} and b.rnum <= #{endRow} 
+			]]>
+	</select>
+	
+	<select id="selectReview" parameterType="int" resultType="reviewVO" >
+		select 
+			re_no, re_title, re_content, re_writer, 
+			to_date(re_date, 'yy-mm-dd hh24:mi:ss') re_date, re_hit 
+		from review 
+		where re_no = #{reNo}
+	</select>
+	
+	<update id="updateReview" parameterType="reviewVO">
+		update review 
+		set 
+			re_title = #{reTitle},
+			re_content = #{reContent},
+			re_date = sysdate 
+		where re_no = #{reNo} 
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		delete from review
+		where re_no = #{reNo}  
+	</delete>
+	
+<!-- 	<insert id="insertReview" parameterType="reviewVO"> -->
+<!-- 		insert into review  -->
+<!-- 	</insert> -->
+	
+</mapper>
