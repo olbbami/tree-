@@ -16,7 +16,7 @@
 
 	<script type="text/javascript">
 		$(function() {
-			$("#browser").treeview();
+			$("#brow").treeview();
 		});
 	</script>
 
@@ -27,8 +27,8 @@
 	<div id="main">
 
 	<h4>Sample 1 - default</h4>
-	<ul id="browser" class="filetree">
-		<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/folder.gif" /> 123
+	<ul id="brow" class="filetree">
+		<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/folder.gif" /> 
 			<ul>
 				<li>blabla <img src="../images/file.gif" /></li>
 			</ul>
@@ -36,9 +36,9 @@
 		<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/folder.gif" />
 			<ul>
 				<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/folder.gif" />
-					<ul id="folder21">
-						<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /> more text</li>
-						<li>and here, too<img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /></li>
+					<ul id="folderdsfsd21">
+						<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" />text1</li>
+						<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" />text2</li>
 					</ul>
 				</li>
 				<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /></li>
