@@ -49,7 +49,7 @@
 				<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /></li>
 			</ul>
 		</li>
-		<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /></li>
+<%-- 		<li><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif" /></li> --%>
 	</ul>
 
 </div>

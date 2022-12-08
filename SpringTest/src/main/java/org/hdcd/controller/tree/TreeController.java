@@ -54,6 +54,54 @@ public class TreeController {
 		node5.setCodeLvl(3);
 		node5.setCodeNm("파일5");
 		node5.setParentId("b001");
+		
+		TreeNode node6= new TreeNode();
+		node6.setCodeId("f001");
+		node6.setCodeLvl(3);
+		node6.setCodeNm("파일6");
+		node6.setParentId("b001");
+		
+		TreeNode node7 = new TreeNode();
+		node7.setCodeId("g001");
+		node7.setCodeLvl(3);
+		node7.setCodeNm("파일7");
+		node7.setParentId("b001");
+		
+		TreeNode node8 = new TreeNode();
+		node8.setCodeId("h001");
+		node8.setCodeLvl(3);
+		node8.setCodeNm("파일8");
+		node8.setParentId("c001");
+		
+		TreeNode node9 = new TreeNode();
+		node9.setCodeId("i001");
+		node9.setCodeLvl(3);
+		node9.setCodeNm("파일9");
+		node9.setParentId("c001");
+		
+		TreeNode node10 = new TreeNode();
+		node10.setCodeId("j001");
+		node10.setCodeLvl(3);
+		node10.setCodeNm("파일10");
+		node10.setParentId("e001");
+		
+		TreeNode node11 = new TreeNode();
+		node11.setCodeId("k001");
+		node11.setCodeLvl(3);
+		node11.setCodeNm("파일11");
+		node11.setParentId("e001");
+	
+		TreeNode node12 = new TreeNode();
+		node12.setCodeId("l001");
+		node12.setCodeLvl(3);
+		node12.setCodeNm("파일12");
+		node12.setParentId("k001");
+	
+		TreeNode node13 = new TreeNode();
+		node13.setCodeId("m001");
+		node13.setCodeLvl(3);
+		node13.setCodeNm("파일13");
+		node13.setParentId("l001");
 	
 		
 		List<TreeNode> list = new ArrayList();
@@ -62,6 +110,14 @@ public class TreeController {
 		list.add(node3);
 		list.add(node4);
 		list.add(node5);
+		list.add(node6);
+		list.add(node7);
+		list.add(node8);
+		list.add(node9);
+		list.add(node10);
+		list.add(node11);
+		list.add(node12);
+		list.add(node13);
 		
 		return list;
 	}
