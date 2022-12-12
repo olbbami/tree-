@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hdcd.controller.vo.TreeNode;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +25,13 @@ public class TreeController {
 	
 	
 	@ResponseBody
+	@RequestMapping(value = "/getTreeData", method = RequestMethod.POST)
+	public TreeNode getNodeData(@RequestBody TreeNode node) {
+		return node; 
+	}
+	
+	
+	@ResponseBody
 	@RequestMapping(value = "/getData", method =RequestMethod.GET)
 	public List<TreeNode> getData() {
 		TreeNode node1 = new TreeNode();
@@ -35,19 +43,19 @@ public class TreeController {
 		node2.setCodeId("b001");
 		node2.setCodeLvl(2);
 		node2.setCodeNm("파일2");
-		node2.setParentId("a001");
+//		node2.setParentId("a001");
 		
 		TreeNode node3 = new TreeNode();
 		node3.setCodeId("c001");
 		node3.setCodeLvl(3);
 		node3.setCodeNm("파일3");
-		node3.setParentId("b001");
+//		node3.setParentId("a001");
 		
 		TreeNode node4 = new TreeNode();
 		node4.setCodeId("d001");
 		node4.setCodeLvl(3);
 		node4.setCodeNm("파일4");
-		node4.setParentId("c001");
+//		node4.setParentId("a001");
 	
 		TreeNode node5 = new TreeNode();
 		node5.setCodeId("e001");
@@ -83,7 +91,7 @@ public class TreeController {
 		node10.setCodeId("j001");
 		node10.setCodeLvl(3);
 		node10.setCodeNm("파일10");
-		node10.setParentId("e001");
+		node10.setParentId("b001");
 		
 		TreeNode node11 = new TreeNode();
 		node11.setCodeId("k001");
