@@ -22,6 +22,11 @@ public class TreeController {
 	public String showTree2() {
 		return "treeTest/treeTest2";
 	}
+
+	@RequestMapping(value = "/treeTest4", method = RequestMethod.GET)
+	public String showTree4() {
+		return "treeTest/treeTest4";
+	}
 	
 	
 	@ResponseBody
@@ -30,6 +35,10 @@ public class TreeController {
 		return node; 
 	}
 	
+	@RequestMapping(value = "/clickTest", method = RequestMethod.GET)
+	public String clickTest() {
+		return "treeTest/click_Test";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/getData", method =RequestMethod.GET)
