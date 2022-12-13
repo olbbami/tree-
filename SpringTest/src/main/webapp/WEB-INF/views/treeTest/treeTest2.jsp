@@ -14,7 +14,14 @@
 	<style>
 	#codeList{
 		display : inline-block;
+	
 	}
+	
+	#codeList span{
+		font-size : 15px;
+	}
+	
+	.filetree li { padding: 3px 0 15px 16px; }
 	
 	#mycontent{
 		display : inline-block;
@@ -46,7 +53,7 @@
 						var codeId = e.codeId;
 						var parentId = e.parentId;
 						var codeLvl = e.codeLvl;
-						var li = '<li onselectstart="return false" ondragstart="return false" id="'+ codeId +'"><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif"><span onclick="oneclick(this)">'+codeNm+'</span></li>';
+						var li = '<li onselectstart="return false" ondragstart="return false" id="'+ codeId +'"><img style="display : none;" src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif"><img width="15" height="14" src="${pageContext.request.contextPath }/resources/dist/img/avatar.png"><span onclick="oneclick(this)">'+codeNm+'</span></li>';
 						
 						// 일단 각각의 노드들이 li태그요소라고 보면 되고, 처음에는 파일로 간주하여 li를 생성하고 이후 해당태그를 부모로 갖는 노드가 나타나면 해당 태그를 파일에서 폴더로 바꿔주는 느낌의 로직? 또는 알고리즘 
 						
@@ -58,7 +65,7 @@
 						 
 								} else {  // 부모가 있는 li요소들은 else문을 들어감 
 								var parentLi = $("li[id='"+ parentId +"']");
-									  var div = '<div onclick=myclick(this) class="hitarea expandable-hitarea"><img src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/ajax-loader.gif"></div>'	
+									  var div = '<div onclick=myclick(this) class="hitarea expandable-hitarea"></div>'	
 									  parentLi.addClass("expandable")
 									  
 									  // 모든 부모 li요소들은 직계자식으로 div태그를 단 한개씩만 가질 수 있음 (find해서 하나도 찾지 못했다는 것은 해당 태그에 div태그를 append해야함을 의미) 
@@ -69,7 +76,7 @@
 
 										// 부모요소의 img자식 태그 중 직계자식img태그만 그 모양을 폴더로 바꿔주면 됨 
 									      parentLi.children("img").attr("src","${pageContext.request.contextPath }/resources/jquery-treeview-master/images/folder.gif");
-										  
+										  parentLi.children("img").css("display","none");	  
 									 
 									  // 부모 li요소의 직계자식(ul)  
 								      var bUl = parentLi.children("ul");
