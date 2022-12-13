@@ -17,6 +17,10 @@
 	
 	}
 	
+	.mymenu:hover {
+	  background: #CE93D8;
+	  border-left: 3px solid #9C27B0;
+	}
 	#codeList span{
 		font-size : 15px;
 	}
@@ -166,13 +170,10 @@
 					
 					// 각각의 Ul태그 중 마지막 li요소들만을 배열형태로 가져옴 
 					var ulArr = $("ul li:last-child");
-					console.log(ulArr)
 					for(let i = 0; i < ulArr.length; i++){
-						console.log(ulArr[i]);
 						
 						// li요소 안에 div 태그가 하나라도 존재한다면(해당 li요소가 폴더라면) 폴더 밑으로 아무것도 보이지 않게 함 
 						if($(ulArr[i]).find("div").length != 0){
-							console.log("이제 들어오겠네  ㅋㅋ ")
 							$(ulArr[i]).attr("class","closed expandable lastExpandable");
 							$(ulArr[i]).children("div").attr("class","hitarea closed-hitarea expandable-hitarea lastExpandable-hitarea");
 														
@@ -202,12 +203,10 @@
 		            		$(liArr2[i]).on("dblclick",function(e){
 // 		     				console.log("더블클릭 체크(for문 안)"+liArr2[i])
 		             			e.stopPropagation();
-		             			console.log(liArr2[i])
 		                		$(liArr2[i]).children("div").click();
 			        	//  li중 폴더가 아닌 녀석들은 ajax를 통한 데이터 조회가 가능하도록 작성
 							if($(liArr2[i]).children("img").attr("src") == "${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif"){
 								
-								console.log("파일 폴더 잘 구분해서 들어오는지 체크 :" + liArr2[i])
 								// 파일의 데이터를 가져와서 body에 뿌려주는 ajax 코드 작성   
 								
 								var mynode = {
@@ -265,20 +264,17 @@
 	        				$(div).append(hTag1);
 	        				$(div).append(hTag2);
 	        				$(div).append(hTag3);
-
+							
 	        				document.body.appendChild(div);
 	        			}
 	        			var div = document.getElementById(id);
 	        			
 	        			
 	        			var allLi = document.querySelectorAll("li");
-	        			console.log("li요소들 잘 나오는지 체크");
-	        			console.log(allLi);
 	        			
 	        			for(let i = 0; i < allLi.length; i++){
 	        				if($(allLi[i]).children("img").attr("src") == "${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif"){
 								// 모든 li요소들 중 파일인 녀석들만 우클릭 시 원하는 메뉴가 나오도록 설정함    
-								console.log("for문 들어왓는지 체크 : "+allLi[i]);
 	        					allLi[i].addEventListener("contextmenu",function(e){
 	        						e.preventDefault();
 
@@ -306,8 +302,6 @@
 	        		// 아래는 모달에 대한 로직들 
 //	     			console.log(document.querySelectorAll(".mymenu"));
 	            		var hTagArr = document.querySelectorAll(".mymenu")
-	            		console.log("h태그 잘 넘어왓늕지 보자")
-	    				console.log(hTagArr);
 	            		for(let i = 0; i < hTagArr.length; i++){
 	            			hTagArr[i].addEventListener("click",function(){
 	            	    		var idVal = $(hTagArr[i]).attr("id"); 
