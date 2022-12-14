@@ -12,5 +12,10 @@
 		select * from employee 
 		order by emp_lv
 	</select>
-
+	
+	
+	<select id="selectEmpData" parameterType="String" resultType="org.hdcd.controller.vo.TreeNode">
+		select * from employee
+		where emp_id = #{empId}
+	</select>
 </mapper>

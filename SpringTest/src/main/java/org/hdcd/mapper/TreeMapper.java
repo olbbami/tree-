@@ -10,4 +10,6 @@ public interface TreeMapper {
 	public List<TreeNode> selectDatas();
 
 	public List<TreeNode> selectEmpDatas();
+
+	public TreeNode selectEmpData(String empId);
 }

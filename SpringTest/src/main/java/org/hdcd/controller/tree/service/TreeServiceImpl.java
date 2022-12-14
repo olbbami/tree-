@@ -24,4 +24,9 @@ public class TreeServiceImpl implements ITreeService {
 		return mapper.selectEmpDatas();
 	}
 
+	@Override
+	public TreeNode selectEmpData(String empId) {
+		return mapper.selectEmpData(empId);
+	}
+
 }

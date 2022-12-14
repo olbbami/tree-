@@ -10,4 +10,6 @@ public interface ITreeService {
 
 	public List<TreeNode> selectEmpDatas();
 
+	public TreeNode selectEmpData(String empId);
+
 }

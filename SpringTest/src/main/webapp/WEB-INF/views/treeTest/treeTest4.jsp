@@ -119,7 +119,7 @@
 					
 					
 					$.each(result,function(i,e){
-// 						console.log(e);
+						console.log(e);
 						// 사원테이블에서 온 데이터인지, 부서테이블에서 온 데이터인지에 따라서 codeId, parentId가 결정되도록 차별성을 둬야 하므로 아래와 같은 코드를 작성함 
 						if(e.empId == null){
 							var codeId = e.deptId;
@@ -263,6 +263,8 @@
 	            	// 우클릭에 대한 이벤트 로직 
 	            	var Contextmenu = !function() {
 	        			var id = 'contextmenu';
+	        			
+	        			
 	        			{
 	        				var div = document.createElement('div');
 	        				div.id = id;
@@ -287,7 +289,11 @@
 								// 모든 li요소들 중 파일인 녀석들만 우클릭 시 원하는 메뉴가 나오도록 설정함    
 	        					allLi[i].addEventListener("contextmenu",function(e){
 	        						e.preventDefault();
-
+									
+	        						emp_idVal = $(allLi[i]).attr("id");
+	        						
+	        						
+	        						
 	                				var x = e.pageX + 'px';
 	                				var y = e.pageY + 'px';
 	                				div.style.display = 'block';
@@ -317,6 +323,34 @@
 	            	    		var idVal = $(hTagArr[i]).attr("id"); 
 	            				
 	            	    		modal = document.getElementById(idVal);
+	            	    		console.log("유니크 컨텐트 확인");
+	            	    		console.log($(modal).find("#unique_content"))
+	            	    		
+	            	    		if(idVal == "message"){
+	            	    			
+	            	    			var empObj = {
+	            	    					empId : emp_idVal
+	            	    			}
+	            	    			
+	            	    			$.ajax({
+										type : "post",
+										url : "/getEmpData",
+										data : JSON.stringify(empObj),
+										contentType : "application/json; charset=utf-8",
+										dataType : "json",
+										success : function(res){
+//	 										console.log(res);
+			            	    		var myStr = "수신메일&nbsp;&nbsp;<input type='text' value='"+res.empName+"' disabled='disabled'/>";
+			            	    		$(modal).find("#unique_content").html(myStr);
+											
+											
+										}
+									})
+	            	    			
+	            	    			
+	            	    			
+	            	    		}
+	            	    		
 	            	    		closeBtn = modal.querySelector(".close-area")
 	            	    		closeBtn.addEventListener("click", e => {
 	            		    		modalOff()
@@ -404,8 +438,10 @@
 		}); // $(function(){}) 끝 
 
 		
-		
-    	
+		console.log("리스트 태그 가져와는지 확인!")
+    	console.log($("li"))
+    	console.log($("#1"))
+		console.log("리스트 태그 가져와는지 확인끝!")
 		
 		
 		
@@ -502,6 +538,7 @@
 			<div class="title">
 				<h2>쪽지보내기</h2>
 			</div>
+			<div id="unique_content"></div>
 			<div class="close-area">X</div>
 			<div class="content">
 				<p>가나다라마바사 아자차카타파하</p>
@@ -518,6 +555,7 @@
 			<div class="title">
 				<h2>일감 요청하기</h2>
 			</div>
+			<div id="unique_content"></div>
 			<div class="close-area">X</div>
 			<div class="content">
 				<p>가나다라마바사 아자차카타파하</p>
@@ -534,6 +572,7 @@
 			<div class="title">
 				<h2>칭찬하기</h2>
 			</div>
+			<div id="unique_content"></div>
 			<div class="close-area">X</div>
 			<div class="content">
 				<p>가나다라마바사 아자차카타파하</p>
