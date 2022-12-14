@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hdcd.mapper.TreeMapper">
+	<select id="selectDatas" resultType="org.hdcd.controller.vo.TreeNode">
+		select dept_id, dept_name, parent_id
+	    from department
+	    start with parent_id is null
+	    connect by parent_id = prior dept_id
+	</select>
+
+	<select id="selectEmpDatas" resultType="org.hdcd.controller.vo.TreeNode">
+		select * from employee 
+		order by emp_lv
+	</select>
+
+</mapper>

@@ -119,10 +119,19 @@
 					
 					
 					$.each(result,function(i,e){
-						var codeNm = e.codeNm;
-						var codeId = e.codeId;
-						var parentId = e.parentId;
-						var codeLvl = e.codeLvl;
+// 						console.log(e);
+						// 사원테이블에서 온 데이터인지, 부서테이블에서 온 데이터인지에 따라서 codeId, parentId가 결정되도록 차별성을 둬야 하므로 아래와 같은 코드를 작성함 
+						if(e.empId == null){
+							var codeId = e.deptId;
+							var codeNm = e.deptName;
+							var parentId = e.parentId;
+						}else{
+							var codeNm = e.empName;
+							var codeId = e.empId;
+							var parentId = e.deptId;
+						}
+						
+// 						var codeLvl = e.codeLvl;
 						var li = '<li onselectstart="return false" ondragstart="return false" id="'+ codeId +'"><img style="display : none;" src="${pageContext.request.contextPath }/resources/jquery-treeview-master/images/file.gif"><img width="15" height="14" src="${pageContext.request.contextPath }/resources/dist/img/avatar.png"><span onclick="oneclick(this)">'+codeNm+'</span></li>';
 						
 						// 일단 각각의 노드들이 li태그요소라고 보면 되고, 처음에는 파일로 간주하여 li를 생성하고 이후 해당태그를 부모로 갖는 노드가 나타나면 해당 태그를 파일에서 폴더로 바꿔주는 느낌의 로직? 또는 알고리즘 
@@ -210,7 +219,7 @@
 								// 파일의 데이터를 가져와서 body에 뿌려주는 ajax 코드 작성   
 								
 								var mynode = {
-									codeId : $(liArr2[i]).attr("id")
+									deptId : $(liArr2[i]).attr("id")
 								}
 								
 								$.ajax({
@@ -221,7 +230,8 @@
 									dataType : "json",
 									success : function(res){
 // 										console.log(res);
-										str = "<h2>"+res.codeId+"</h2>";
+
+										str = "<h2>"+res.deptId+"</h2>";
 										
 										$("#mycontent").html(str);
 									}
